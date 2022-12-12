@@ -1,0 +1,137 @@
+html {
+  min-height: 100%;
+}
+
+body {
+  color: white;
+  background: linear-gradient(to top, #6c73aa 0%, #7980b3 1%, #9d8ea2 100%);
+  font-family: monospace;
+}
+
+h1 {
+  text-align: center;
+  margin: 0 auto;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+input {
+  padding: 1px 60px;
+  text-align: center;
+  border-radius: 30px;
+  border: 1px solid white;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  margin-top: 7%;
+  border: 3px dashed white;
+  max-width: 800px;
+  min-width: 800px;
+}
+
+::placeholder {
+  color: #7980b3;
+}
+
+.formStyle {
+  margin: 20px 0 0 0;
+  text-align: center;
+  font-size: 18px;
+}
+
+.dayTimeCurrent {
+  text-align: center;
+  font-size: 20px;
+  text-decoration: underline;
+}
+
+.currentWeather {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.currentHumidity,
+.wind {
+  text-align: center;
+  border: 2px solid white;
+  padding: 10px;
+  border-radius: 30px;
+  background-color: #a3a1c2;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+  font-size: 18px;
+}
+
+.currentHumidity {
+  margin: 10px 100px;
+}
+
+.wind {
+  margin: 10px 115px;
+}
+
+.advice {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.predictionWeekDays,
+.predictionTemperature,
+.predictionIcons,
+.predictionPrecipitation {
+  font-size: 18px;
+  text-align: center;
+}
+
+.predictionWeekDays p,
+.predictionTemperature p,
+.predictionIcons p,
+.predictionPrecipitation p {
+  margin: 40px 0;
+}
+
+.predictionWeekDays p {
+  border: 1px dashed white;
+}
+
+.predictionTemperature p,
+.predictionIcons p,
+.predictionPrecipitation p {
+  border: 1px solid transparent;
+}
+
+.predictionPrecipitation {
+  padding: 0px 20px 0 0;
+}
+
+.submitButton {
+  background: white;
+  color: #6c73aa;
+  font-weight: bold;
+  border: 2px double #6c73aa;
+  margin-top: 10px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+  padding: 1px 30px;
+}
+
+.submitButton:hover {
+  background-color: #f2d4e0;
+  color: white;
+  border: 2px double white;
+}
+
+a {
+  color: #f2d4e0;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #52527a;
+  text-decoration: underline;
+}
+
+.currentButton:hover {
+  background-color: #eeaac5;
+}
