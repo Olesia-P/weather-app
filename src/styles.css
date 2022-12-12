@@ -135,3 +135,8 @@ a:hover {
 .currentButton:hover {
   background-color: #eeaac5;
 }
+
+.sourceCode {
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+}
