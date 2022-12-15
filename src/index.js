@@ -22,7 +22,6 @@ function showCurrentTime(date) {
 
 
 function showWeather(response) {
-  console.log(response.data);
   document.querySelector("#current-temp").innerHTML = Math.round(response.data.temperature.current);
   document.querySelector("#city").innerHTML = response.data.city;
   document.querySelector("#humidity").innerHTML = response.data.temperature.humidity;
