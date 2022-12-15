@@ -20,16 +20,18 @@ function showCurrentTime(date) {
   pageCurrentTime.innerHTML = ` ${hours}:${minutes}`;
 }
 
+
 function showWeather(response) {
-  document.querySelector("#current-temp").innerHTML = Math.round(response.data.main.temp);
-  document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
+  console.log(response.data);
+  document.querySelector("#current-temp").innerHTML = Math.round(response.data.temperature.current);
+  document.querySelector("#city").innerHTML = response.data.city;
+  document.querySelector("#humidity").innerHTML = response.data.temperature.humidity;
+  document.querySelector("#wind").innerHTML = response.data.wind.speed;
 }
 
 function searchCity (city) {
-  let apiKey = "894a2e7aa7f46eeca5d8778f6faa5a5b";
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  let apiKey = "f34eafbe5b20fo4443a0a3et0b481f5f";
+  let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   axios.get(url).then(showWeather);
 }
 
@@ -42,8 +44,8 @@ function handleSubmit (event) {
 function searchLocation (position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
-  let apiKey = "894a2e7aa7f46eeca5d8778f6faa5a5b";
-  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  let apiKey = "f34eafbe5b20fo4443a0a3et0b481f5f";
+  let url = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
   axios.get(url).then(showWeather);
 }
 
@@ -55,7 +57,7 @@ let now = new Date();
 showDate(now);
 showCurrentTime(now);
 
-searchCity("Kyiv");
+searchCity("Paris");
 
 document.querySelector("#form").addEventListener("submit", handleSubmit);
 document.querySelector("#current-button").addEventListener("click", getCurrentLocation);
