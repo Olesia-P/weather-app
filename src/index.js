@@ -1,4 +1,9 @@
-function showDate(date) {
+
+function formatDate(timestamp) {
+  let now = new Date(timestamp);
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  document.querySelector("#current-time").innerHTML = ` ${hours}:${minutes}`;
   let weekDays = [
     "Sunday",
     "Monday",
@@ -7,19 +12,10 @@ function showDate(date) {
     "Thursday",
     "Friday",
     "Saturday"
-  ];
-  let currentWeekDay = weekDays[date.getDay()];
-  let pageWeekDay = document.querySelector("#current-week-day");
-  pageWeekDay.innerHTML = currentWeekDay;
+    ];
+  let currentWeekDay = weekDays[now.getDay()];
+  document.querySelector("#current-week-day").innerHTML = currentWeekDay;
 }
-
-function showCurrentTime(date) {
-  let hours = date.getHours();
-  let minutes = date.getMinutes();
-  let pageCurrentTime = document.querySelector("#current-time");
-  pageCurrentTime.innerHTML = ` ${hours}:${minutes}`;
-}
-
 
 function showWeather(response) {
   document.querySelector("#current-temp").innerHTML = Math.round(response.data.temperature.current);
@@ -27,6 +23,7 @@ function showWeather(response) {
   document.querySelector("#humidity").innerHTML = response.data.temperature.humidity;
   document.querySelector("#wind").innerHTML = response.data.wind.speed;
   document.querySelector("#description").innerHTML = response.data.condition.description;
+  formatDate(response.data.time * 1000)
 }
 
 function searchCity (city) {
@@ -53,9 +50,7 @@ function getCurrentLocation (event) {
 navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
-let now = new Date();
-showDate(now);
-showCurrentTime(now);
+
 
 searchCity("Paris");
 
