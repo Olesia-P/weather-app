@@ -144,7 +144,12 @@ a:hover {
 .description {
   font-size: 15px;
   padding-left: 5px;
+  display: inline-block;
 
+}
+
+.description:first-letter {
+  text-transform: capitalize;
 }
 
 .units {
