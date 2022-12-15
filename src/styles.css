@@ -145,15 +145,31 @@ a:hover {
   font-size: 15px;
   padding-left: 5px;
   display: inline-block;
+  position: relative;
+  right: 30px;
 
 }
 
 .description:first-letter {
   text-transform: capitalize;
+
+
 }
 
 .units {
   font-size: 20px;
   position: relative;
   top: -15px;
+  left: 20px;
+
+}
+
+.currentIcon {
+  height: 2em;
+
+}
+
+.currentTemp {
+  position: relative;
+  left: 20px;
 }

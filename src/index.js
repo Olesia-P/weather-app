@@ -24,6 +24,11 @@ function showWeather(response) {
   document.querySelector("#wind").innerHTML = response.data.wind.speed;
   document.querySelector("#description").innerHTML = response.data.condition.description;
   formatDate(response.data.time * 1000)
+  let currentIcon = document.querySelector("#current-icon");
+  let icon = response.data.condition.icon;
+  currentIcon.setAttribute("src", `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${icon}.png`);
+curretIcon.setAttribute("alt", response.data.condition.icon);
+
 }
 
 function searchCity (city) {
@@ -56,3 +61,5 @@ searchCity("Paris");
 
 document.querySelector("#form").addEventListener("submit", handleSubmit);
 document.querySelector("#current-button").addEventListener("click", getCurrentLocation);
+
+
