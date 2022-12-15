@@ -27,7 +27,7 @@ function showWeather(response) {
   let currentIcon = document.querySelector("#current-icon");
   let icon = response.data.condition.icon;
   currentIcon.setAttribute("src", `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${icon}.png`);
-curretIcon.setAttribute("alt", response.data.condition.icon);
+currentIcon.setAttribute("alt", response.data.condition.icon);
 
 }
 
