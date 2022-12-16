@@ -32,7 +32,29 @@ function showFUnits (event) {
   C.classList.remove("clickedUnits");
 }
 
+function showAdvice (weather) {
+  let conditions = [ "clear", "clouds", "rain", "thunderstorm", "snow", "mist"];
+  let advice = document.querySelector("#advice");
+  if (weather.search(conditions[0])>-1) {
+    advice.innerHTML = "Don't forget to put the sunscreen!";
+  }
+  if (weather.search(conditions[1])>-1) {
+    advice.innerHTML = "Don't be sad about the clouds :)";
+  }
+  if (weather.search(conditions[2])>-1 || weather.search(conditions[3])>-1) {
+    advice.innerHTML = "Don't forget to take an umbrella!";
+  }
+  if (weather.search(conditions[4])>-1) {
+    advice.innerHTML = "Be careful, the roads might be icy!";
+  }
+  if (weather.search(conditions[5])>-1) {
+    advice.innerHTML = "Put on some extra clothes, it might feel chilly.";
+  }
+  }
+  
+
 function showWeather(response) {
+  //console.log(response.data);
   CUnits = response.data.temperature.current;
   document.querySelector("#current-temp").innerHTML = Math.round(CUnits);
   document.querySelector("#city").innerHTML = response.data.city;
@@ -44,6 +66,8 @@ function showWeather(response) {
   let icon = response.data.condition.icon;
   currentIcon.setAttribute("src", `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${icon}.png`);
   currentIcon.setAttribute("alt", response.data.condition.icon);
+  let description = response.data.condition.description;
+  showAdvice(description);
 }
 
 function searchCity (city) {
@@ -72,7 +96,6 @@ navigator.geolocation.getCurrentPosition(searchLocation);
 
 let CUnits = null;
 
-
 let F = document.querySelector("#F");
 F.addEventListener("click", showFUnits);
 F.classList.remove("clickedUnits");
@@ -83,5 +106,9 @@ C.addEventListener("click", showCUnits);
 document.querySelector("#form").addEventListener("submit", handleSubmit);
 document.querySelector("#current-button").addEventListener("click", getCurrentLocation);
 
+
+
 searchCity("Paris");
+
+
 
