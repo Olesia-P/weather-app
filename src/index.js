@@ -17,8 +17,20 @@ function formatDate(timestamp) {
   document.querySelector("#current-week-day").innerHTML = currentWeekDay;
 }
 
+function showCUnits (event) {
+  event.preventDefault();
+  document.querySelector("#current-temp").innerHTML = Math.round(CUnits);
+}
+
+function showFUnits (event) {
+  event.preventDefault();
+  let FUnits = CUnits * (9/5) + 32;
+  document.querySelector("#current-temp").innerHTML = Math.round(FUnits);
+}
+
 function showWeather(response) {
-  document.querySelector("#current-temp").innerHTML = Math.round(response.data.temperature.current);
+  CUnits = response.data.temperature.current;
+  document.querySelector("#current-temp").innerHTML = Math.round(CUnits);
   document.querySelector("#city").innerHTML = response.data.city;
   document.querySelector("#humidity").innerHTML = response.data.temperature.humidity;
   document.querySelector("#wind").innerHTML = response.data.wind.speed;
@@ -27,8 +39,7 @@ function showWeather(response) {
   let currentIcon = document.querySelector("#current-icon");
   let icon = response.data.condition.icon;
   currentIcon.setAttribute("src", `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${icon}.png`);
-currentIcon.setAttribute("alt", response.data.condition.icon);
-
+  currentIcon.setAttribute("alt", response.data.condition.icon);
 }
 
 function searchCity (city) {
@@ -55,11 +66,13 @@ function getCurrentLocation (event) {
 navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
+let CUnits = null;
 
-
-searchCity("Paris");
+document.querySelector("#F").addEventListener("click", showFUnits);
+document.querySelector("#C").addEventListener("click", showCUnits);
 
 document.querySelector("#form").addEventListener("submit", handleSubmit);
 document.querySelector("#current-button").addEventListener("click", getCurrentLocation);
 
+searchCity("Paris");
 
