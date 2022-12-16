@@ -20,12 +20,16 @@ function formatDate(timestamp) {
 function showCUnits (event) {
   event.preventDefault();
   document.querySelector("#current-temp").innerHTML = Math.round(CUnits);
+  C.classList.add("clickedUnits");
+  F.classList.remove("clickedUnits");
 }
 
 function showFUnits (event) {
   event.preventDefault();
   let FUnits = CUnits * (9/5) + 32;
   document.querySelector("#current-temp").innerHTML = Math.round(FUnits);
+  F.classList.add("clickedUnits");
+  C.classList.remove("clickedUnits");
 }
 
 function showWeather(response) {
@@ -68,8 +72,13 @@ navigator.geolocation.getCurrentPosition(searchLocation);
 
 let CUnits = null;
 
-document.querySelector("#F").addEventListener("click", showFUnits);
-document.querySelector("#C").addEventListener("click", showCUnits);
+
+let F = document.querySelector("#F");
+F.addEventListener("click", showFUnits);
+F.classList.remove("clickedUnits");
+
+let C = document.querySelector("#C");
+C.addEventListener("click", showCUnits);
 
 document.querySelector("#form").addEventListener("submit", handleSubmit);
 document.querySelector("#current-button").addEventListener("click", getCurrentLocation);

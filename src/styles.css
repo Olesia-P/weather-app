@@ -131,7 +131,11 @@ a {
 
 a:hover {
   color: #52527a;
-  text-decoration: underline;
+
+}
+
+.clickedUnits {
+  color: #52527a;
 }
 
 .currentButton:hover {
