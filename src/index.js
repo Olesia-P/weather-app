@@ -51,7 +51,45 @@ function showAdvice (weather) {
     advice.innerHTML = "Put on some extra clothes, it might feel chilly.";
   }
   }
+
+  function getForecastDay (timestamp) {
+    let time = [timestamp[1].time * 1000, timestamp[2].time * 1000, timestamp[3].time * 1000, timestamp[4].time * 1000, timestamp[5].time * 1000];
+    let weekDays = [
+    "Sun",
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat"
+    ];
+    document.querySelector("#predictionWeekDay1").innerHTML = weekDays[new Date(time[0]).getDay()];
+    document.querySelector("#predictionWeekDay2").innerHTML = weekDays[new Date(time[1]).getDay()];
+    document.querySelector("#predictionWeekDay3").innerHTML = weekDays[new Date(time[2]).getDay()];
+    document.querySelector("#predictionWeekDay4").innerHTML = weekDays[new Date(time[3]).getDay()];
+    document.querySelector("#predictionWeekDay5").innerHTML = weekDays[new Date(time[4]).getDay()];
+  }
+
+  function showForecast (response) {
+    console.log(response.data);
+    getForecastDay(response.data.daily);
+    getForecast
+    
+    
   
+    
+    
+    
+  
+   
+  }
+  
+  function getForecast(coordinates) {
+    let apiKey = "f34eafbe5b20fo4443a0a3et0b481f5f";
+    forecastUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+    axios.get(forecastUrl).then(showForecast);
+  
+  }
 
 function showWeather(response) {
   //console.log(response.data);
@@ -68,6 +106,7 @@ function showWeather(response) {
   currentIcon.setAttribute("alt", response.data.condition.icon);
   let description = response.data.condition.description;
   showAdvice(description);
+  getForecast (response.data.coordinates);
 }
 
 function searchCity (city) {
@@ -109,6 +148,8 @@ document.querySelector("#current-button").addEventListener("click", getCurrentLo
 
 
 searchCity("Paris");
+
+
 
 
 
