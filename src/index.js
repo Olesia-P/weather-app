@@ -70,10 +70,19 @@ function showAdvice (weather) {
     document.querySelector("#predictionWeekDay5").innerHTML = weekDays[new Date(time[4]).getDay()];
   }
 
+  function getForecastTemp (temperature) {
+   let dayTemp = [temperature[1].temperature.day, temperature[2].temperature.day, temperature[3].temperature.day, temperature[4].temperature.day, temperature[5].temperature.day];
+   document.querySelector("#predictionTemperature1").innerHTML = `${Math.round(dayTemp[0])}°C`;
+   document.querySelector("#predictionTemperature2").innerHTML = `${Math.round(dayTemp[1])}°C`;
+   document.querySelector("#predictionTemperature3").innerHTML = `${Math.round(dayTemp[2])}°C`;
+   document.querySelector("#predictionTemperature4").innerHTML = `${Math.round(dayTemp[3])}°C`;
+   document.querySelector("#predictionTemperature5").innerHTML = `${Math.round(dayTemp[4])}°C`;
+  }
+
   function showForecast (response) {
     console.log(response.data);
     getForecastDay(response.data.daily);
-    getForecast
+    getForecastTemp(response.data.daily);
     
     
   
