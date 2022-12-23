@@ -81,24 +81,28 @@ function showAdvice (weather) {
     console.log(response.data);  
     let forcastDays = response.data.daily;
     let weekDaysHTML= "";
-    forcastDays.forEach(function (day){
+    forcastDays.forEach(function (day, index){
+      if (index > 0 && index < 6) {
     weekDaysHTML = weekDaysHTML + `<p>${formatDay(day.time)}</p>`;
      document.querySelector("#prediction-week-days").innerHTML = weekDaysHTML;
-    })
+    }})
 
     let forecastTempHTML = "";
-    forcastDays.forEach(function (day){
-    forecastTempHTML = forecastTempHTML + `<p>${Math.round(day.temperature.minimum)}°C ${Math.round(day.temperature.maximum)}°C</p>`;})
+    forcastDays.forEach(function (day, index){
+      if (index > 0 && index < 6) {
+    forecastTempHTML = forecastTempHTML + `<p><span class="minimumTemp">${Math.round(day.temperature.minimum)}°C</span> ${Math.round(day.temperature.maximum)}°C</p>`;}})
     document.querySelector("#prediction-temperature").innerHTML = forecastTempHTML;
     
     let forecastIconsHTML = "";
-    forcastDays.forEach(function (day){
-    forecastIconsHTML = forecastIconsHTML + `<i><img src="${day.condition.icon_url}" alt=""></i>`;})
+    forcastDays.forEach(function (day, index){
+      if (index > 0 && index < 6) {
+    forecastIconsHTML = forecastIconsHTML + `<i><img src="${day.condition.icon_url}" alt="${day.condition.icon}"></i>`;}})
     document.querySelector("#prediction-icons").innerHTML = forecastIconsHTML;
    
     let forecastHumidityHTML = "";
-    forcastDays.forEach(function (day){
-    forecastHumidityHTML = forecastHumidityHTML + `<p>${day.temperature.humidity}%</p>`;})
+    forcastDays.forEach(function (day, index){
+      if (index > 0 && index < 6) {
+    forecastHumidityHTML = forecastHumidityHTML + `<p>${day.temperature.humidity}%</p>`;}})
     document.querySelector("#forecast-humidity").innerHTML = forecastHumidityHTML;
   }
   

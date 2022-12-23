@@ -108,6 +108,12 @@ input {
   border: 1px solid transparent;
 }
 
+.minimumTemp {
+  color: #c5e2e8;
+}
+
+
+
 .predictionIcons i img {
   width: 50px;
   margin-top: 20px;
