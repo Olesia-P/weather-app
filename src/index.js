@@ -85,12 +85,16 @@ function showAdvice (weather) {
     weekDaysHTML = weekDaysHTML + `<p>${formatDay(day.time)}</p>`;
      document.querySelector("#prediction-week-days").innerHTML = weekDaysHTML;
     })
+
     let forecastTempHTML = "";
     forcastDays.forEach(function (day){
-    forecastTempHTML = forecastTempHTML + `<p>${Math.round(day.temperature.day)}</p>`;})
+    forecastTempHTML = forecastTempHTML + `<p>${Math.round(day.temperature.minimum)}°C ${Math.round(day.temperature.maximum)}°C</p>`;})
     document.querySelector("#prediction-temperature").innerHTML = forecastTempHTML;
-    let forecastIconsHTML = "";
     
+    let forecastIconsHTML = "";
+    forcastDays.forEach(function (day){
+    forecastIconsHTML = forecastIconsHTML + `<i><img src="${day.condition.icon_url}" alt=""></i>`;})
+    document.querySelector("#prediction-icons").innerHTML = forecastIconsHTML;
    
   }
   

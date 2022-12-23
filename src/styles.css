@@ -87,9 +87,13 @@ input {
   text-align: center;
 }
 
+.predictionIcons {
+  padding-top: 6px;
+}
+
+
 .predictionWeekDays p,
 .predictionTemperature p,
-.predictionIcons p,
 .predictionPrecipitation p {
   margin: 40px 0;
 }
@@ -99,9 +103,15 @@ input {
 }
 
 .predictionTemperature p,
-.predictionIcons p,
-.predictionPrecipitation p {
+.predictionPrecipitation p,
+.predictionIcons i img {
   border: 1px solid transparent;
+}
+
+.predictionIcons i img {
+  width: 50px;
+  margin-top: 20px;
+
 }
 
 .predictionPrecipitation {
