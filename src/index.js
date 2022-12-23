@@ -52,15 +52,6 @@ function showAdvice (weather) {
   }
   }
 
-/*
-  function getForecastTemp (temperature) {
-   let dayTemp = [temperature[1].temperature.day, temperature[2].temperature.day, temperature[3].temperature.day, temperature[4].temperature.day, temperature[5].temperature.day];
-   document.querySelector("#predictionTemperature1").innerHTML = `${Math.round(dayTemp[0])}°C`;
-   document.querySelector("#predictionTemperature2").innerHTML = `${Math.round(dayTemp[1])}°C`;
-   document.querySelector("#predictionTemperature3").innerHTML = `${Math.round(dayTemp[2])}°C`;
-   document.querySelector("#predictionTemperature4").innerHTML = `${Math.round(dayTemp[3])}°C`;
-   document.querySelector("#predictionTemperature5").innerHTML = `${Math.round(dayTemp[4])}°C`;
-  }*/
 
   function formatDay (timestamp) {
     let weekDays = [
@@ -114,7 +105,6 @@ function showAdvice (weather) {
   }
 
 function showWeather(response) {
-  //console.log(response.data);
   CUnits = response.data.temperature.current;
   document.querySelector("#current-temp").innerHTML = Math.round(CUnits);
   document.querySelector("#city").innerHTML = response.data.city;
