@@ -52,8 +52,17 @@ function showAdvice (weather) {
   }
   }
 
-  function getForecastDay (timestamp) {
-    let time = [timestamp[1].time * 1000, timestamp[2].time * 1000, timestamp[3].time * 1000, timestamp[4].time * 1000, timestamp[5].time * 1000];
+/*
+  function getForecastTemp (temperature) {
+   let dayTemp = [temperature[1].temperature.day, temperature[2].temperature.day, temperature[3].temperature.day, temperature[4].temperature.day, temperature[5].temperature.day];
+   document.querySelector("#predictionTemperature1").innerHTML = `${Math.round(dayTemp[0])}°C`;
+   document.querySelector("#predictionTemperature2").innerHTML = `${Math.round(dayTemp[1])}°C`;
+   document.querySelector("#predictionTemperature3").innerHTML = `${Math.round(dayTemp[2])}°C`;
+   document.querySelector("#predictionTemperature4").innerHTML = `${Math.round(dayTemp[3])}°C`;
+   document.querySelector("#predictionTemperature5").innerHTML = `${Math.round(dayTemp[4])}°C`;
+  }*/
+
+  function formatDay (timestamp) {
     let weekDays = [
     "Sun",
     "Mon",
@@ -63,33 +72,20 @@ function showAdvice (weather) {
     "Fri",
     "Sat"
     ];
-    document.querySelector("#predictionWeekDay1").innerHTML = weekDays[new Date(time[0]).getDay()];
-    document.querySelector("#predictionWeekDay2").innerHTML = weekDays[new Date(time[1]).getDay()];
-    document.querySelector("#predictionWeekDay3").innerHTML = weekDays[new Date(time[2]).getDay()];
-    document.querySelector("#predictionWeekDay4").innerHTML = weekDays[new Date(time[3]).getDay()];
-    document.querySelector("#predictionWeekDay5").innerHTML = weekDays[new Date(time[4]).getDay()];
-  }
-
-  function getForecastTemp (temperature) {
-   let dayTemp = [temperature[1].temperature.day, temperature[2].temperature.day, temperature[3].temperature.day, temperature[4].temperature.day, temperature[5].temperature.day];
-   document.querySelector("#predictionTemperature1").innerHTML = `${Math.round(dayTemp[0])}°C`;
-   document.querySelector("#predictionTemperature2").innerHTML = `${Math.round(dayTemp[1])}°C`;
-   document.querySelector("#predictionTemperature3").innerHTML = `${Math.round(dayTemp[2])}°C`;
-   document.querySelector("#predictionTemperature4").innerHTML = `${Math.round(dayTemp[3])}°C`;
-   document.querySelector("#predictionTemperature5").innerHTML = `${Math.round(dayTemp[4])}°C`;
+    let date = new Date(timestamp * 1000);
+    let day = date.getDay();
+    return weekDays[day];
   }
 
   function showForecast (response) {
-    console.log(response.data);
-    getForecastDay(response.data.daily);
-    getForecastTemp(response.data.daily);
+    console.log(response.data);  
+    let time = response.data.daily;
+    let dayDisplayHTML= "";
+    time.forEach(function (day){
+    dayDisplayHTML = dayDisplayHTML + `<p>${formatDay(day.time)}</p>`;
+     document.querySelector("#predictionWeekDays").innerHTML = dayDisplayHTML;
+    })
     
-    
-  
-    
-    
-    
-  
    
   }
   
