@@ -79,12 +79,17 @@ function showAdvice (weather) {
 
   function showForecast (response) {
     console.log(response.data);  
-    let time = response.data.daily;
-    let dayDisplayHTML= "";
-    time.forEach(function (day){
-    dayDisplayHTML = dayDisplayHTML + `<p>${formatDay(day.time)}</p>`;
-     document.querySelector("#predictionWeekDays").innerHTML = dayDisplayHTML;
+    let forcastDays = response.data.daily;
+    let weekDaysHTML= "";
+    forcastDays.forEach(function (day){
+    weekDaysHTML = weekDaysHTML + `<p>${formatDay(day.time)}</p>`;
+     document.querySelector("#prediction-week-days").innerHTML = weekDaysHTML;
     })
+    let forecastTempHTML = "";
+    forcastDays.forEach(function (day){
+    forecastTempHTML = forecastTempHTML + `<p>${Math.round(day.temperature.day)}</p>`;})
+    document.querySelector("#prediction-temperature").innerHTML = forecastTempHTML;
+    let forecastIconsHTML = "";
     
    
   }
