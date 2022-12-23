@@ -17,20 +17,6 @@ function formatDate(timestamp) {
   document.querySelector("#current-week-day").innerHTML = currentWeekDay;
 }
 
-function showCUnits (event) {
-  event.preventDefault();
-  document.querySelector("#current-temp").innerHTML = Math.round(CUnits);
-  C.classList.add("clickedUnits");
-  F.classList.remove("clickedUnits");
-}
-
-function showFUnits (event) {
-  event.preventDefault();
-  let FUnits = CUnits * (9/5) + 32;
-  document.querySelector("#current-temp").innerHTML = Math.round(FUnits);
-  F.classList.add("clickedUnits");
-  C.classList.remove("clickedUnits");
-}
 
 function showAdvice (weather) {
   let conditions = [ "clear", "clouds", "rain", "thunderstorm", "snow", "mist"];
@@ -145,21 +131,13 @@ function getCurrentLocation (event) {
 navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
-let CUnits = null;
-
-let F = document.querySelector("#F");
-F.addEventListener("click", showFUnits);
-F.classList.remove("clickedUnits");
-
-let C = document.querySelector("#C");
-C.addEventListener("click", showCUnits);
 
 document.querySelector("#form").addEventListener("submit", handleSubmit);
 document.querySelector("#current-button").addEventListener("click", getCurrentLocation);
 
 
 
-searchCity("Paris");
+searchCity("Kyiv");
 
 
 
