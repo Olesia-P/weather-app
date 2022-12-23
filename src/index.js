@@ -96,6 +96,10 @@ function showAdvice (weather) {
     forecastIconsHTML = forecastIconsHTML + `<i><img src="${day.condition.icon_url}" alt=""></i>`;})
     document.querySelector("#prediction-icons").innerHTML = forecastIconsHTML;
    
+    let forecastHumidityHTML = "";
+    forcastDays.forEach(function (day){
+    forecastHumidityHTML = forecastHumidityHTML + `<p>${day.temperature.humidity}%</p>`;})
+    document.querySelector("#forecast-humidity").innerHTML = forecastHumidityHTML;
   }
   
   function getForecast(coordinates) {

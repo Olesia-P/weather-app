@@ -82,7 +82,7 @@ input {
 .predictionWeekDays,
 .predictionTemperature,
 .predictionIcons,
-.predictionPrecipitation {
+.predictionHumidity {
   font-size: 18px;
   text-align: center;
 }
@@ -94,7 +94,7 @@ input {
 
 .predictionWeekDays p,
 .predictionTemperature p,
-.predictionPrecipitation p {
+.predictionHumidity p {
   margin: 40px 0;
 }
 
@@ -103,7 +103,7 @@ input {
 }
 
 .predictionTemperature p,
-.predictionPrecipitation p,
+.predictionHumidity p,
 .predictionIcons i img {
   border: 1px solid transparent;
 }
@@ -114,7 +114,7 @@ input {
 
 }
 
-.predictionPrecipitation {
+.predictionHumidity {
   padding: 0px 20px 0 0;
 }
 
